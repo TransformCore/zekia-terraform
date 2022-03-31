@@ -3,6 +3,11 @@ variable "terraform_state_bucket" {
   default = "internal-cloud-carbon-footprint-terraform-state"
 }
 
+variable "athena_query_results_bucket" {
+  type    = string
+  default = "internal-cloud-carbon-footprint-athena-results"
+}
+
 variable "default_region" {
   type    = string
   default = "eu-west-2"

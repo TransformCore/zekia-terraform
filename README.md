@@ -26,6 +26,7 @@ Cloud Carbon Footprint on AWS.
 
 | Name | Type |
 |------|------|
+| [aws_athena_database.athena_db](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/athena_database) | resource |
 | [aws_eip.ccf](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/eip) | resource |
 | [aws_iam_instance_profile.ccf_instance_profile](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/iam_instance_profile) | resource |
 | [aws_iam_policy.athena](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/iam_policy) | resource |
@@ -40,8 +41,11 @@ Cloud Carbon Footprint on AWS.
 | [aws_nat_gateway.natgw](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/nat_gateway) | resource |
 | [aws_route.internet_access](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/route) | resource |
 | [aws_route_table.private](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/route_table) | resource |
+| [aws_s3_bucket.athena_query_results_bucket](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket.ccf_terraform_state](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/s3_bucket) | resource |
+| [aws_s3_bucket_server_side_encryption_configuration.athena_bucket_encryption](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/s3_bucket_server_side_encryption_configuration) | resource |
 | [aws_s3_bucket_server_side_encryption_configuration.ccf_terraform_state_encryption](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/s3_bucket_server_side_encryption_configuration) | resource |
+| [aws_s3_bucket_versioning.athena_bucket_versioning](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/s3_bucket_versioning) | resource |
 | [aws_s3_bucket_versioning.ccf_terraform_state_versioning](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/s3_bucket_versioning) | resource |
 | [aws_security_group.ccf_instance_sg](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/security_group) | resource |
 | [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/data-sources/availability_zones) | data source |
@@ -50,6 +54,7 @@ Cloud Carbon Footprint on AWS.
 | [aws_iam_policy_document.ce](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.glue](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.s3](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/data-sources/iam_policy_document) | data source |
+| [aws_s3_bucket.billing_data_bucket](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/data-sources/s3_bucket) | data source |
 
 ## Inputs
 
@@ -57,6 +62,7 @@ Cloud Carbon Footprint on AWS.
 |------|-------------|------|---------|:--------:|
 | <a name="input_ami_id"></a> [ami\_id](#input\_ami\_id) | n/a | `string` | `"ami-03e88be9ecff64781"` | no |
 | <a name="input_application"></a> [application](#input\_application) | n/a | `string` | `"ccf"` | no |
+| <a name="input_athena_query_results_bucket"></a> [athena\_query\_results\_bucket](#input\_athena\_query\_results\_bucket) | n/a | `string` | `"internal-cloud-carbon-footprint-athena-results"` | no |
 | <a name="input_default_region"></a> [default\_region](#input\_default\_region) | n/a | `string` | `"eu-west-2"` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | n/a | `string` | `"dev"` | no |
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | n/a | `string` | `"t2.medium"` | no |

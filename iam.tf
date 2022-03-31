@@ -21,7 +21,7 @@ data "aws_iam_policy_document" "s3" {
   statement {
     actions   = ["s3:*"]
     effect    = "Allow"
-    resources = [data.aws_s3_bucket.athena_query_results_bucket.arn, "${data.aws_s3_bucket.athena_query_results_bucket.arn}/*"]
+    resources = [aws_s3_bucket.athena_query_results_bucket.arn, "${aws_s3_bucket.athena_query_results_bucket.arn}/*"]
   }
 }
 
