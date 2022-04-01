@@ -50,3 +50,13 @@ resource "aws_key_pair" "ccf_ec2_key" {
   key_name   = "ccf-ec2-key"
   public_key = var.ccf_ec2_key
 }
+
+resource "aws_network_interface" "nwif" {
+  subnet_id       = module.vpc.public_subnets[0]
+  security_groups = [aws_security_group.ccf_instance_sg.id]
+
+  attachment {
+    instance     = module.ec2_instance.id
+    device_index = 1
+  }
+}

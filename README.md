@@ -39,6 +39,7 @@ Cloud Carbon Footprint on AWS.
 | [aws_iam_role_policy_attachment.glue](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.s3](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_key_pair.ccf_ec2_key](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/key_pair) | resource |
+| [aws_network_interface.nwif](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/network_interface) | resource |
 | [aws_route.internet_access](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/route) | resource |
 | [aws_route_table.private](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/route_table) | resource |
 | [aws_s3_bucket.athena_query_results_bucket](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/s3_bucket) | resource |
