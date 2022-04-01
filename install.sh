@@ -42,10 +42,10 @@ sed -i 's/REACT_APP_PREVIOUS_YEAR_OF_USAGE/#REACT_APP_PREVIOUS_YEAR_OF_USAGE/g' 
 sed -i 's/=2/=12/g' .env
 
 cat <<EOF >> .env
-HOST=<YOUR HOST DOMAIN NAME>
+HOST=localhost
 PORT=80
 EOF
 
 # Start CCF application (client and API)
 cd /home/ec2-user/cloud-carbon-footprint
-yarn start-with-mock-data
+yarn start

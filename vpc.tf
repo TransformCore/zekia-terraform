@@ -33,6 +33,10 @@ resource "aws_eip" "ccf" {
   instance = module.ec2_instance.id
   vpc      = true
 
+  depends_on = [
+    module.vpc.igw_id
+  ]
+
   lifecycle {
     prevent_destroy = false
   }
@@ -42,17 +46,12 @@ resource "aws_eip" "ccf" {
   }
 }
 
-resource "aws_nat_gateway" "natgw" {
-  subnet_id     = module.vpc.public_subnets[0]
-  allocation_id = aws_eip.ccf.id
-}
-
 resource "aws_route_table" "private" {
   count  = length(data.aws_availability_zones.available.names)
   vpc_id = module.vpc.vpc_id
 
   route {
     cidr_block     = "0.0.0.0/0"
-    nat_gateway_id = aws_nat_gateway.natgw.id
+    nat_gateway_id = module.vpc.natgw_ids[0]
   }
 }

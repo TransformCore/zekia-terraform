@@ -38,7 +38,7 @@ Cloud Carbon Footprint on AWS.
 | [aws_iam_role_policy_attachment.ce](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.glue](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.s3](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_nat_gateway.natgw](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/nat_gateway) | resource |
+| [aws_key_pair.ccf_ec2_key](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/key_pair) | resource |
 | [aws_route.internet_access](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/route) | resource |
 | [aws_route_table.private](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/route_table) | resource |
 | [aws_s3_bucket.athena_query_results_bucket](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/s3_bucket) | resource |
@@ -63,6 +63,7 @@ Cloud Carbon Footprint on AWS.
 | <a name="input_ami_id"></a> [ami\_id](#input\_ami\_id) | n/a | `string` | `"ami-03e88be9ecff64781"` | no |
 | <a name="input_application"></a> [application](#input\_application) | n/a | `string` | `"ccf"` | no |
 | <a name="input_athena_query_results_bucket"></a> [athena\_query\_results\_bucket](#input\_athena\_query\_results\_bucket) | n/a | `string` | `"internal-cloud-carbon-footprint-athena-results"` | no |
+| <a name="input_ccf_ec2_key"></a> [ccf\_ec2\_key](#input\_ccf\_ec2\_key) | Public key for EC2 instance. | `string` | n/a | yes |
 | <a name="input_default_region"></a> [default\_region](#input\_default\_region) | n/a | `string` | `"eu-west-2"` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | n/a | `string` | `"dev"` | no |
 | <a name="input_instance_type"></a> [instance\_type](#input\_instance\_type) | n/a | `string` | `"t2.medium"` | no |

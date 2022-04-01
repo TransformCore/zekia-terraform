@@ -6,14 +6,14 @@ resource "aws_security_group" "ccf_instance_sg" {
     from_port   = 80
     to_port     = 80
     protocol    = "tcp"
-    cidr_blocks = [module.vpc.vpc_cidr_block]
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   ingress {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = [module.vpc.vpc_cidr_block]
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
@@ -34,14 +34,19 @@ module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
   version = "~> 3.0"
 
-  ami           = var.ami_id
-  instance_type = var.instance_type
-  # key_name               = var.key_name
+  ami                    = var.ami_id
+  instance_type          = var.instance_type
+  key_name               = aws_key_pair.ccf_ec2_key.key_name
   monitoring             = true
   vpc_security_group_ids = [aws_security_group.ccf_instance_sg.id]
-  subnet_id              = module.vpc.private_subnets[0]
+  subnet_id              = module.vpc.public_subnets[0]
   user_data              = file("install.sh")
   iam_instance_profile   = aws_iam_instance_profile.ccf_instance_profile.name
 
   tags = local.tags
+}
+
+resource "aws_key_pair" "ccf_ec2_key" {
+  key_name   = "ccf-ec2-key"
+  public_key = var.ccf_ec2_key
 }

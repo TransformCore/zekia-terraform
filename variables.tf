@@ -32,3 +32,9 @@ variable "environment" {
   type    = string
   default = "dev"
 }
+
+variable "ccf_ec2_key" {
+  type        = string
+  description = "Public key for EC2 instance."
+  sensitive   = true
+}
