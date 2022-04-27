@@ -2,10 +2,10 @@ module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
   version = "3.12.0"
 
-  name = "${var.application}-vpc"
+  name = "${local.name}-vpc"
   cidr = "10.0.0.0/16"
 
-  azs             = ["${var.default_region}a", "${var.default_region}b", "${var.default_region}c"]
+  azs             = ["${var.aws_region}a", "${var.aws_region}b", "${var.aws_region}c"]
   private_subnets = ["10.0.1.0/24"]
   public_subnets  = ["10.0.101.0/24"]
 
@@ -16,8 +16,7 @@ module "vpc" {
   enable_dns_support   = true
 
   tags = {
-    Terraform   = "true"
-    Environment = var.environment
+    Terraform = "true"
   }
 }
 
@@ -27,23 +26,6 @@ resource "aws_route" "internet_access" {
   route_table_id         = module.vpc.vpc_main_route_table_id
   destination_cidr_block = "0.0.0.0/0"
   gateway_id             = module.vpc.igw_id
-}
-
-resource "aws_eip" "ccf" {
-  instance = module.ec2_instance.id
-  vpc      = true
-
-  depends_on = [
-    module.vpc.igw_id
-  ]
-
-  lifecycle {
-    prevent_destroy = false
-  }
-
-  tags = {
-    Name = "ccf-eip-${var.environment}"
-  }
 }
 
 resource "aws_route_table" "private" {
