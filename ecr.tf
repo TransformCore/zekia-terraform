@@ -8,7 +8,7 @@ resource "aws_ecr_repository" "main" {
 
   encryption_configuration {
     encryption_type = "KMS"
-    kms_key         = var.ecr_kms_key_id
+    kms_key         = module.kms.key_id
   }
 }
 

@@ -36,9 +36,3 @@ variable "tls_cert_arn" {
   type        = string
   description = "ARN of the TLS certificate to use."
 }
-
-variable "ecr_kms_key_id" {
-  type        = string
-  description = "ID of the KMS key to use to encrypt the ECR."
-  sensitive   = true
-}
