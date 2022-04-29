@@ -1,40 +1,38 @@
-variable "terraform_state_bucket" {
-  type    = string
-  default = "internal-cloud-carbon-footprint-terraform-state"
-}
-
-variable "athena_query_results_bucket" {
-  type    = string
-  default = "internal-cloud-carbon-footprint-athena-results"
-}
-
-variable "default_region" {
-  type    = string
-  default = "eu-west-2"
-}
-
-variable "ami_id" {
-  type    = string
-  default = "ami-03e88be9ecff64781" # Amazon Linux AMI 2. This changes based on your AWS region.
-}
-
-variable "instance_type" {
-  type    = string
-  default = "t2.medium"
-}
-
-variable "application" {
-  type    = string
-  default = "ccf"
-}
-
 variable "environment" {
   type    = string
   default = "dev"
 }
 
-variable "ccf_ec2_key" {
+variable "aws_region" {
+  type = string
+}
+
+variable "desired_count" {
+  type        = number
+  description = "Desired number of ECS tasks to run."
+}
+
+variable "container_cpu" {
+  type        = number
+  description = "Number of CPU units used by the task."
+}
+
+variable "container_memory" {
+  type        = number
+  description = "Amount (MiB) of memory used by the task."
+}
+
+variable "container_port" {
+  type        = number
+  description = "Port the container should run on."
+}
+
+variable "container_name" {
   type        = string
-  description = "Public key for EC2 instance."
-  sensitive   = true
+  description = "Name of the container."
+}
+
+variable "tls_cert_arn" {
+  type        = string
+  description = "ARN of the TLS certificate to use."
 }
