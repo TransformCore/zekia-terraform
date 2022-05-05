@@ -13,9 +13,24 @@ resource "aws_ecs_task_definition" "main" {
   network_mode             = "awsvpc"
   cpu                      = var.container_cpu
   memory                   = var.container_memory
-  container_definitions    = file("./data/container_definitions.json")
   execution_role_arn       = aws_iam_role.ecs_task_execution_role.arn
   task_role_arn            = aws_iam_role.ecs_task_execution_role.arn
+
+  container_definitions = jsonencode([
+    {
+      name      = local.container_name
+      image     = "${var.container_image}:${var.container_image_tag}"
+      cpu       = var.container_cpu
+      memory    = var.container_memory
+      essential = true
+      # environment = [var.container_envs]
+      portMappings = [{
+        protocol      = "tcp"
+        containerPort = var.container_port
+        hostPort      = var.container_port
+      }]
+    }
+  ])
 }
 
 resource "aws_ecs_service" "main" {
@@ -32,8 +47,8 @@ resource "aws_ecs_service" "main" {
   }
 
   load_balancer {
-    target_group_arn = aws_security_group.alb.arn
-    container_name   = var.container_name
+    target_group_arn = aws_lb_target_group.main.arn
+    container_name   = local.container_name
     container_port   = var.container_port
   }
 
