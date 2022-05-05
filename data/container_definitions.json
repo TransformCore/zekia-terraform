@@ -1,9 +1,0 @@
-[
-  {
-    "name": "placeholder",
-    "image": "hello-world:latest",
-    "cpu": 1024,
-    "memory": 2048,
-    "essential": true
-  }
-]

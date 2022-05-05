@@ -27,12 +27,29 @@ variable "container_port" {
   description = "Port the container should run on."
 }
 
-variable "container_name" {
+variable "container_image" {
   type        = string
-  description = "Name of the container."
+  description = "Name of the container image."
+}
+
+variable "container_image_tag" {
+  type        = string
+  description = "Version of the container image to use."
+}
+
+variable "container_envs" {
+  type        = list(string)
+  description = "Environment variables for the container."
+  default     = [""]
 }
 
 variable "tls_cert_arn" {
   type        = string
   description = "ARN of the TLS certificate to use."
+  default     = null
+}
+
+variable "allowed_ips" {
+  type        = list(string)
+  description = "List of allowed ingress IPs."
 }
