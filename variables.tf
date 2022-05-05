@@ -48,8 +48,3 @@ variable "tls_cert_arn" {
   description = "ARN of the TLS certificate to use."
   default     = null
 }
-
-variable "allowed_ips" {
-  type        = list(string)
-  description = "List of allowed ingress IPs."
-}

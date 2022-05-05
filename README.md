@@ -51,7 +51,6 @@ Cloud Carbon Footprint on AWS.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_allowed_ips"></a> [allowed\_ips](#input\_allowed\_ips) | List of allowed ingress IPs. | `list(string)` | n/a | yes |
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | n/a | `string` | n/a | yes |
 | <a name="input_container_cpu"></a> [container\_cpu](#input\_container\_cpu) | Number of CPU units used by the task. | `number` | n/a | yes |
 | <a name="input_container_envs"></a> [container\_envs](#input\_container\_envs) | Environment variables for the container. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
