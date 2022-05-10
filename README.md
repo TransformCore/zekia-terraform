@@ -43,9 +43,12 @@ Cloud Carbon Footprint on AWS.
 | [aws_route.internet_access](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/route) | resource |
 | [aws_route_table.private](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/route_table) | resource |
 | [aws_s3_bucket.athena](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/s3_bucket) | resource |
+| [aws_s3_bucket.client](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket_acl.athena](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/s3_bucket_acl) | resource |
+| [aws_s3_bucket_acl.client](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/s3_bucket_acl) | resource |
 | [aws_s3_bucket_server_side_encryption_configuration.main](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/s3_bucket_server_side_encryption_configuration) | resource |
 | [aws_s3_bucket_versioning.main](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/s3_bucket_versioning) | resource |
+| [aws_s3_bucket_website_configuration.client](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/s3_bucket_website_configuration) | resource |
 | [aws_security_group.alb](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/security_group) | resource |
 | [aws_security_group.ecs_tasks](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/security_group) | resource |
 | [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/data-sources/availability_zones) | data source |
