@@ -1,10 +1,28 @@
 resource "aws_s3_bucket" "client" {
-  bucket = "${local.name}-webapp.example.com"
+  bucket = "${local.name}-client"
 }
 
 resource "aws_s3_bucket_acl" "client" {
   bucket = aws_s3_bucket.client.id
   acl    = "private"
+}
+
+resource "aws_s3_bucket_versioning" "client" {
+  bucket = aws_s3_bucket.client.id
+
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+resource "aws_s3_bucket_server_side_encryption_configuration" "client" {
+  bucket = aws_s3_bucket.client.id
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm = "AES256"
+    }
+  }
 }
 
 resource "aws_s3_bucket_website_configuration" "client" {
@@ -36,6 +54,14 @@ data "aws_iam_policy_document" "client" {
   }
 }
 
+resource "aws_s3_bucket_public_access_block" "client" {
+  bucket                  = aws_s3_bucket.client.id
+  block_public_acls       = true
+  block_public_policy     = true
+  restrict_public_buckets = true
+  ignore_public_acls      = true
+}
+
 resource "aws_cloudfront_origin_access_identity" "main" {
   comment = "${local.project} S3 Origin"
 }
@@ -53,8 +79,8 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   enabled             = true
   is_ipv6_enabled     = true
   default_root_object = "index.html"
-  aliases             = [""]
   price_class         = "PriceClass_200"
+  # aliases           = [""]
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]

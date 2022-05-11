@@ -7,7 +7,7 @@ resource "aws_s3_bucket_acl" "athena" {
   acl    = "private"
 }
 
-resource "aws_s3_bucket_versioning" "main" {
+resource "aws_s3_bucket_versioning" "athena" {
   bucket = aws_s3_bucket.athena.id
 
   versioning_configuration {
@@ -15,7 +15,7 @@ resource "aws_s3_bucket_versioning" "main" {
   }
 }
 
-resource "aws_s3_bucket_server_side_encryption_configuration" "main" {
+resource "aws_s3_bucket_server_side_encryption_configuration" "athena" {
   bucket = aws_s3_bucket.athena.id
 
   rule {
@@ -23,6 +23,14 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "main" {
       sse_algorithm = "AES256"
     }
   }
+}
+
+resource "aws_s3_bucket_public_access_block" "athena" {
+  bucket                  = aws_s3_bucket.athena.id
+  block_public_acls       = true
+  block_public_policy     = true
+  restrict_public_buckets = true
+  ignore_public_acls      = true
 }
 
 resource "aws_athena_database" "main" {
