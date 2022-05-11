@@ -16,3 +16,8 @@ output "cloudfront_domain_name" {
   description = "URL of the CloudFront distribution."
   value       = aws_cloudfront_distribution.s3_distribution.domain_name
 }
+
+output "static_files_bucket" {
+  description = "Name of the bucket for the static site files."
+  value       = aws_s3_bucket.client.bucket
+}

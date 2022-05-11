@@ -82,4 +82,5 @@ Cloud Carbon Footprint on AWS.
 | <a name="output_athena_results_bucket"></a> [athena\_results\_bucket](#output\_athena\_results\_bucket) | Name of the Athena bucket. |
 | <a name="output_aws_ecr_repository_url"></a> [aws\_ecr\_repository\_url](#output\_aws\_ecr\_repository\_url) | n/a |
 | <a name="output_cloudfront_domain_name"></a> [cloudfront\_domain\_name](#output\_cloudfront\_domain\_name) | URL of the CloudFront distribution. |
+| <a name="output_static_files_bucket"></a> [static\_files\_bucket](#output\_static\_files\_bucket) | Name of the bucket for the static site files. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
