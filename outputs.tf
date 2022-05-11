@@ -11,3 +11,8 @@ output "athena_results_bucket" {
   description = "Name of the Athena bucket."
   value       = aws_s3_bucket.athena.bucket
 }
+
+output "cloudfront_domain_name" {
+  description = "URL of the CloudFront distribution."
+  value       = aws_cloudfront_distribution.s3_distribution.domain_name
+}

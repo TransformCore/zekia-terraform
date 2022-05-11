@@ -1,10 +1,10 @@
+variable "aws_region" {
+  type = string
+}
+
 variable "environment" {
   type    = string
   default = "dev"
-}
-
-variable "aws_region" {
-  type = string
 }
 
 variable "desired_count" {

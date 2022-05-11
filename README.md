@@ -27,6 +27,8 @@ Cloud Carbon Footprint on AWS.
 | Name | Type |
 |------|------|
 | [aws_athena_database.main](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/athena_database) | resource |
+| [aws_cloudfront_distribution.s3_distribution](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/cloudfront_distribution) | resource |
+| [aws_cloudfront_origin_access_identity.main](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/cloudfront_origin_access_identity) | resource |
 | [aws_ecr_lifecycle_policy.main](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/ecr_lifecycle_policy) | resource |
 | [aws_ecr_repository.main](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/ecr_repository) | resource |
 | [aws_ecs_cluster.main](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/ecs_cluster) | resource |
@@ -46,12 +48,14 @@ Cloud Carbon Footprint on AWS.
 | [aws_s3_bucket.client](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket_acl.athena](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/s3_bucket_acl) | resource |
 | [aws_s3_bucket_acl.client](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/s3_bucket_acl) | resource |
+| [aws_s3_bucket_policy.client](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/s3_bucket_policy) | resource |
 | [aws_s3_bucket_server_side_encryption_configuration.main](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/s3_bucket_server_side_encryption_configuration) | resource |
 | [aws_s3_bucket_versioning.main](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/s3_bucket_versioning) | resource |
 | [aws_s3_bucket_website_configuration.client](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/s3_bucket_website_configuration) | resource |
 | [aws_security_group.alb](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/security_group) | resource |
 | [aws_security_group.ecs_tasks](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/security_group) | resource |
 | [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/data-sources/availability_zones) | data source |
+| [aws_iam_policy_document.client](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.ecr](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.ecs_task_execution_role](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/data-sources/iam_policy_document) | data source |
 
@@ -77,4 +81,5 @@ Cloud Carbon Footprint on AWS.
 | <a name="output_alb_hostname"></a> [alb\_hostname](#output\_alb\_hostname) | URL of the ALB. |
 | <a name="output_athena_results_bucket"></a> [athena\_results\_bucket](#output\_athena\_results\_bucket) | Name of the Athena bucket. |
 | <a name="output_aws_ecr_repository_url"></a> [aws\_ecr\_repository\_url](#output\_aws\_ecr\_repository\_url) | n/a |
+| <a name="output_cloudfront_domain_name"></a> [cloudfront\_domain\_name](#output\_cloudfront\_domain\_name) | URL of the CloudFront distribution. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

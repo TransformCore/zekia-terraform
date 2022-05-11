@@ -26,6 +26,6 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "main" {
 }
 
 resource "aws_athena_database" "main" {
-  name   = "${local.name}_db"
+  name   = "${local.db_name}_athena_db"
   bucket = aws_s3_bucket.athena.id
 }
