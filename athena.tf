@@ -36,4 +36,9 @@ resource "aws_s3_bucket_public_access_block" "athena" {
 resource "aws_athena_database" "main" {
   name   = "${local.db_name}_athena_db"
   bucket = aws_s3_bucket.athena.id
+
+  encryption_configuration {
+    encryption_option = "SSE_KMS"
+    kms_key           = module.athena_kms.key_id
+  }
 }

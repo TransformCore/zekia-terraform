@@ -19,7 +19,8 @@ Cloud Carbon Footprint on AWS.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_kms"></a> [kms](#module\_kms) | git@github.com:TransformCore/internal-terraform-aws-kms.git | v0.0.1 |
+| <a name="module_athena_kms"></a> [athena\_kms](#module\_athena\_kms) | git@github.com:TransformCore/internal-terraform-aws-kms.git | v0.0.1 |
+| <a name="module_ecr_kms"></a> [ecr\_kms](#module\_ecr\_kms) | git@github.com:TransformCore/internal-terraform-aws-kms.git | v0.0.1 |
 | <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | 3.14.0 |
 
 ## Resources
@@ -67,7 +68,7 @@ Cloud Carbon Footprint on AWS.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | n/a | `string` | n/a | yes |
+| <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | Region of the AWS account. | `string` | `"eu-west-2"` | no |
 | <a name="input_container_cpu"></a> [container\_cpu](#input\_container\_cpu) | Number of CPU units used by the task. | `number` | n/a | yes |
 | <a name="input_container_envs"></a> [container\_envs](#input\_container\_envs) | Environment variables for the container. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | <a name="input_container_image"></a> [container\_image](#input\_container\_image) | Name of the container image. | `string` | n/a | yes |
@@ -75,7 +76,7 @@ Cloud Carbon Footprint on AWS.
 | <a name="input_container_memory"></a> [container\_memory](#input\_container\_memory) | Amount (MiB) of memory used by the task. | `number` | n/a | yes |
 | <a name="input_container_port"></a> [container\_port](#input\_container\_port) | Port the container should run on. | `number` | n/a | yes |
 | <a name="input_desired_count"></a> [desired\_count](#input\_desired\_count) | Desired number of ECS tasks to run. | `number` | n/a | yes |
-| <a name="input_environment"></a> [environment](#input\_environment) | n/a | `string` | `"dev"` | no |
+| <a name="input_environment"></a> [environment](#input\_environment) | Project environment (dev, stage, prod). | `string` | `"dev"` | no |
 | <a name="input_tls_cert_arn"></a> [tls\_cert\_arn](#input\_tls\_cert\_arn) | ARN of the TLS certificate to use. | `string` | `null` | no |
 
 ## Outputs
@@ -84,7 +85,7 @@ Cloud Carbon Footprint on AWS.
 |------|-------------|
 | <a name="output_alb_hostname"></a> [alb\_hostname](#output\_alb\_hostname) | URL of the ALB. |
 | <a name="output_athena_results_bucket"></a> [athena\_results\_bucket](#output\_athena\_results\_bucket) | Name of the Athena bucket. |
-| <a name="output_aws_ecr_repository_url"></a> [aws\_ecr\_repository\_url](#output\_aws\_ecr\_repository\_url) | n/a |
+| <a name="output_aws_ecr_repository_url"></a> [aws\_ecr\_repository\_url](#output\_aws\_ecr\_repository\_url) | URL of the ECR repository. |
 | <a name="output_cloudfront_domain_name"></a> [cloudfront\_domain\_name](#output\_cloudfront\_domain\_name) | URL of the CloudFront distribution. |
 | <a name="output_static_files_bucket"></a> [static\_files\_bucket](#output\_static\_files\_bucket) | Name of the bucket for the static site files. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

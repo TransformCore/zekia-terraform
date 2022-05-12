@@ -1,10 +1,13 @@
 variable "aws_region" {
-  type = string
+  type        = string
+  description = "Region of the AWS account."
+  default     = "eu-west-2"
 }
 
 variable "environment" {
-  type    = string
-  default = "dev"
+  type        = string
+  description = "Project environment (dev, stage, prod)."
+  default     = "dev"
 }
 
 variable "desired_count" {
