@@ -48,6 +48,8 @@ Cloud Carbon Footprint on AWS.
 | [aws_route.internet_access](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/route) | resource |
 | [aws_route53_record.api](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/route53_record) | resource |
 | [aws_route53_record.main](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/route53_record) | resource |
+| [aws_route53_record.validation](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/route53_record) | resource |
+| [aws_route53_zone.api](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/route53_zone) | resource |
 | [aws_route53_zone.main](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/route53_zone) | resource |
 | [aws_route_table.private](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/route_table) | resource |
 | [aws_s3_bucket.athena](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/s3_bucket) | resource |
