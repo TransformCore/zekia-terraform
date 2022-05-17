@@ -1,51 +1,41 @@
-resource "aws_security_group" "alb" {
-  name        = "${local.name}-sg-alb-${var.environment}"
-  vpc_id      = module.vpc.vpc_id
-  description = "Inbound access to the ALB."
+resource "aws_acm_certificate" "main" {
+  domain_name       = var.domain
+  validation_method = "DNS"
 
-  ingress {
-    protocol         = "tcp"
-    from_port        = 80
-    to_port          = 80
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
-  }
-
-  ingress {
-    protocol         = "tcp"
-    from_port        = 443
-    to_port          = 443
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
-  }
-
-  egress {
-    protocol         = "-1"
-    from_port        = 0
-    to_port          = 0
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
+  lifecycle {
+    create_before_destroy = true
   }
 }
 
-resource "aws_security_group" "ecs_tasks" {
-  name        = "${local.name}-sg-task-${var.environment}"
-  vpc_id      = module.vpc.vpc_id
-  description = "Security group for ECS task role."
+resource "aws_acm_certificate_validation" "main" {
+  certificate_arn         = aws_acm_certificate.main.arn
+  validation_record_fqdns = [for record in aws_route53_record.main : record.fqdn]
+}
 
-  ingress {
-    protocol         = "tcp"
-    from_port        = var.container_port
-    to_port          = var.container_port
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
+resource "aws_route53_zone" "main" {
+  name = var.domain
+}
+
+resource "aws_route53_record" "main" {
+  zone_id = aws_route53_zone.main.zone_id
+  name    = var.domain
+  type    = "A"
+
+  alias {
+    name                   = aws_cloudfront_distribution.s3_distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.s3_distribution.hosted_zone_id
+    evaluate_target_health = false
   }
+}
 
-  egress {
-    protocol         = "-1"
-    from_port        = 0
-    to_port          = 0
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
+resource "aws_route53_record" "api" {
+  zone_id = aws_route53_zone.main.zone_id
+  name    = "www.${var.domain}"
+  type    = "A"
+
+  alias {
+    name                   = aws_lb.main.dns_name
+    zone_id                = aws_lb.main.zone_id
+    evaluate_target_health = true
   }
 }

@@ -46,8 +46,7 @@ variable "container_envs" {
   default     = [""]
 }
 
-variable "tls_cert_arn" {
+variable "domain" {
   type        = string
-  description = "ARN of the TLS certificate to use."
-  default     = null
+  description = "Domain name of the project."
 }

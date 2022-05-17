@@ -27,6 +27,8 @@ Cloud Carbon Footprint on AWS.
 
 | Name | Type |
 |------|------|
+| [aws_acm_certificate.main](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/acm_certificate) | resource |
+| [aws_acm_certificate_validation.main](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/acm_certificate_validation) | resource |
 | [aws_athena_database.main](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/athena_database) | resource |
 | [aws_cloudfront_distribution.s3_distribution](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/cloudfront_distribution) | resource |
 | [aws_cloudfront_origin_access_identity.main](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/cloudfront_origin_access_identity) | resource |
@@ -44,6 +46,9 @@ Cloud Carbon Footprint on AWS.
 | [aws_lb_listener.https](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/lb_listener) | resource |
 | [aws_lb_target_group.main](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/lb_target_group) | resource |
 | [aws_route.internet_access](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/route) | resource |
+| [aws_route53_record.api](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/route53_record) | resource |
+| [aws_route53_record.main](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/route53_record) | resource |
+| [aws_route53_zone.main](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/route53_zone) | resource |
 | [aws_route_table.private](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/route_table) | resource |
 | [aws_s3_bucket.athena](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket.client](https://registry.terraform.io/providers/hashicorp/aws/4.8.0/docs/resources/s3_bucket) | resource |
@@ -76,8 +81,8 @@ Cloud Carbon Footprint on AWS.
 | <a name="input_container_memory"></a> [container\_memory](#input\_container\_memory) | Amount (MiB) of memory used by the task. | `number` | n/a | yes |
 | <a name="input_container_port"></a> [container\_port](#input\_container\_port) | Port the container should run on. | `number` | n/a | yes |
 | <a name="input_desired_count"></a> [desired\_count](#input\_desired\_count) | Desired number of ECS tasks to run. | `number` | n/a | yes |
+| <a name="input_domain"></a> [domain](#input\_domain) | Domain name of the project. | `string` | n/a | yes |
 | <a name="input_environment"></a> [environment](#input\_environment) | Project environment (dev, stage, prod). | `string` | `"dev"` | no |
-| <a name="input_tls_cert_arn"></a> [tls\_cert\_arn](#input\_tls\_cert\_arn) | ARN of the TLS certificate to use. | `string` | `null` | no |
 
 ## Outputs
 
