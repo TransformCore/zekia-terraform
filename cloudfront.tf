@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "client" {
-  bucket = "${local.name}-client"
+  bucket = "${local.project}-client-${var.environment}"
 }
 
 resource "aws_s3_bucket_acl" "client" {

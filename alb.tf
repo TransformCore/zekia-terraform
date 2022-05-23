@@ -1,5 +1,5 @@
 resource "aws_lb" "main" {
-  name                       = "${local.name}-alb-${var.environment}"
+  name                       = "${local.project}-alb-${var.environment}"
   internal                   = false
   load_balancer_type         = "application"
   security_groups            = [aws_security_group.alb.id]
@@ -8,7 +8,7 @@ resource "aws_lb" "main" {
 }
 
 resource "aws_lb_target_group" "main" {
-  name        = "${local.name}-tg-${var.environment}"
+  name        = "${local.project}-tg-${var.environment}"
   port        = 80
   protocol    = "HTTP"
   target_type = "ip"

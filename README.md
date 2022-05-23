@@ -1,6 +1,15 @@
 # internal-cloud-carbon-footprint-terraform
 
-Cloud Carbon Footprint on AWS.
+The Terraform for the zekia.io infrastructure. This deploys the following to AWS:
+
+- An S3 bucket for static website files
+- An Athena database to query CUR data
+- A CloudFront distribution, pointed at the static website files bucket
+- An ECS service to run container(s)
+- An ECR repository for the container images
+- A VPC including security groups
+- An ACM certificate and Route53 configuration for a supplied domain
+
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 

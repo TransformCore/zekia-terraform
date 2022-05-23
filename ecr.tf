@@ -1,5 +1,5 @@
 resource "aws_ecr_repository" "main" {
-  name                 = "${local.name}-repository-${var.environment}"
+  name                 = "${local.project}-repository-${var.environment}"
   image_tag_mutability = "IMMUTABLE"
 
   image_scanning_configuration {
@@ -18,7 +18,7 @@ resource "aws_ecr_lifecycle_policy" "main" {
 }
 
 resource "aws_iam_policy" "ecr_policy" {
-  name   = "${local.name}-ecr-policy"
+  name   = "${local.project}-ecr-policy"
   policy = data.aws_iam_policy_document.ecr.json
 
 }

@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "athena" {
-  bucket = "${local.name}-athena-results"
+  bucket = "${local.project}-athena-results"
 }
 
 resource "aws_s3_bucket_acl" "athena" {
@@ -34,7 +34,7 @@ resource "aws_s3_bucket_public_access_block" "athena" {
 }
 
 resource "aws_athena_database" "main" {
-  name   = "${local.db_name}_athena_db"
+  name   = "${local.project}_athena_db"
   bucket = aws_s3_bucket.athena.id
 
   encryption_configuration {
