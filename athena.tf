@@ -41,4 +41,8 @@ resource "aws_athena_database" "main" {
     encryption_option = "SSE_KMS"
     kms_key           = module.athena_kms.key_id
   }
+
+  lifecycle {
+    ignore_changes = [bucket, encryption_configuration]
+  }
 }

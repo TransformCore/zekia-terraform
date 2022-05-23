@@ -4,12 +4,12 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "4.8.0"
+      version = "4.15.1"
     }
   }
 
   backend "s3" {
-    bucket = "internal-cloud-carbon-footprint-terraform-state"
+    bucket = "zekia-terraform-state"
     key    = "terraform.tfstate"
     region = "eu-west-2"
   }

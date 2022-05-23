@@ -13,6 +13,10 @@ resource "aws_lb_target_group" "main" {
   protocol    = "HTTP"
   target_type = "ip"
   vpc_id      = module.vpc.vpc_id
+
+  depends_on = [
+    aws_lb.main
+  ]
 }
 
 resource "aws_lb_listener" "http" {
