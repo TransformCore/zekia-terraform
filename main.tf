@@ -1,5 +1,17 @@
+resource "aws_route53domains_registered_domain" "main" {
+  domain_name = var.domain
+
+  dynamic "name_server" {
+    for_each = var.nameservers
+    content {
+      name = name_server.value
+    }
+  }
+}
+
 resource "aws_acm_certificate" "main" {
-  domain_name       = "*.${var.domain}"
+  provider          = aws.cloudfront
+  domain_name       = var.domain
   validation_method = "DNS"
 
   lifecycle {
@@ -8,6 +20,7 @@ resource "aws_acm_certificate" "main" {
 }
 
 resource "aws_acm_certificate_validation" "main" {
+  provider                = aws.cloudfront
   certificate_arn         = aws_acm_certificate.main.arn
   validation_record_fqdns = [for record in aws_route53_record.validation : record.fqdn]
 }

@@ -23,3 +23,15 @@ provider "aws" {
     }
   }
 }
+
+provider "aws" {
+  alias  = "cloudfront"
+  region = "us-east-1"
+
+  default_tags {
+    tags = {
+      Environment = var.environment
+      Project     = local.project
+    }
+  }
+}

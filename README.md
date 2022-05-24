@@ -23,6 +23,7 @@ The Terraform for the zekia.io infrastructure. This deploys the following to AWS
 | Name | Version |
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | 4.15.1 |
+| <a name="provider_aws.cloudfront"></a> [aws.cloudfront](#provider\_aws.cloudfront) | 4.15.1 |
 
 ## Modules
 
@@ -60,6 +61,7 @@ The Terraform for the zekia.io infrastructure. This deploys the following to AWS
 | [aws_route53_record.validation](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/route53_record) | resource |
 | [aws_route53_zone.api](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/route53_zone) | resource |
 | [aws_route53_zone.main](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/route53_zone) | resource |
+| [aws_route53domains_registered_domain.main](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/route53domains_registered_domain) | resource |
 | [aws_route_table.private](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/route_table) | resource |
 | [aws_s3_bucket.athena](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/s3_bucket) | resource |
 | [aws_s3_bucket.client](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/s3_bucket) | resource |
@@ -94,6 +96,7 @@ The Terraform for the zekia.io infrastructure. This deploys the following to AWS
 | <a name="input_desired_count"></a> [desired\_count](#input\_desired\_count) | Desired number of ECS tasks to run. | `number` | n/a | yes |
 | <a name="input_domain"></a> [domain](#input\_domain) | Domain name of the project. | `string` | n/a | yes |
 | <a name="input_environment"></a> [environment](#input\_environment) | Project environment (dev, stage, prod). | `string` | `"dev"` | no |
+| <a name="input_nameservers"></a> [nameservers](#input\_nameservers) | A list of nameservers for the domain. | `list(string)` | n/a | yes |
 
 ## Outputs
 
