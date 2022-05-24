@@ -50,8 +50,3 @@ variable "domain" {
   type        = string
   description = "Domain name of the project."
 }
-
-variable "nameservers" {
-  type        = list(string)
-  description = "A list of nameservers for the domain."
-}
