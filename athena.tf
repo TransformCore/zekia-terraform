@@ -35,14 +35,10 @@ resource "aws_s3_bucket_public_access_block" "athena" {
 
 resource "aws_athena_database" "main" {
   name   = "${local.project}_athena_db"
-  bucket = aws_s3_bucket.athena.id
+  bucket = aws_s3_bucket.athena.bucket
 
   encryption_configuration {
     encryption_option = "SSE_KMS"
-    kms_key           = module.athena_kms.key_id
-  }
-
-  lifecycle {
-    ignore_changes = [bucket, encryption_configuration]
+    kms_key           = "arn:aws:kms:${var.aws_region}:${data.aws_caller_identity.current.account_id}:key/${module.athena_kms.key_id}"
   }
 }
