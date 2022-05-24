@@ -24,11 +24,12 @@ commands:
       - run:
           name: Assume Role
           command: |
-            aws_credentials=$(aws sts assume-role --role-arn "arn:aws:iam::${AWS_ACCOUNT_ID}:role/zekia-assume-role" --role-session-name "circleci")
+            aws_credentials=$(aws sts assume-role --role-arn "arn:aws:iam::$AWS_ACCOUNT_ID:role/zekia-assume-role" --role-session-name "circleci")
             echo "export AWS_ACCESS_KEY_ID=$(echo $aws_credentials | jq -r '.Credentials.AccessKeyId')" >> $BASH_ENV
             echo "export AWS_SECRET_ACCESS_KEY=$(echo $aws_credentials | jq -r '.Credentials.SecretAccessKey')" >> $BASH_ENV
             echo "export AWS_SESSION_TOKEN=$(echo $aws_credentials | jq -r '.Credentials.SessionToken')" >> $BASH_ENV
             source $BASH_ENV
+
 jobs:
   fmt_validate_terraform:
     parameters:
