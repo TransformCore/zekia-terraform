@@ -1,0 +1,120 @@
+version: 2.1
+
+orbs:
+  terraform: "circleci/terraform@3.0.0"
+  slack: "circleci/slack@3.4.2"
+
+executors:
+  default:
+    parameters:
+      git_username:
+        type: string
+
+    working_directory: "/tmp/terraform"
+    resource_class: small
+    docker:
+      - image: ghcr.io/transformcore/terraform-aws:latest
+        auth:
+          username: << parameters.git_username >>
+          password: $GITHUB_TOKEN
+
+commands:
+  assume_role:
+    steps:
+      - run:
+          name: Assume Role
+          command: |
+            aws_credentials=$(aws sts assume-role --role-arn "arn:aws:iam::$AWS_ACCOUNT_ID:role/zekia-assume-role" --role-session-name "circleci")
+            echo "export AWS_ACCESS_KEY_ID=$(echo $aws_credentials | jq -r '.Credentials.AccessKeyId')" >> $BASH_ENV
+            echo "export AWS_SECRET_ACCESS_KEY=$(echo $aws_credentials | jq -r '.Credentials.SecretAccessKey')" >> $BASH_ENV
+            echo "export AWS_SESSION_TOKEN=$(echo $aws_credentials | jq -r '.Credentials.SessionToken')" >> $BASH_ENV
+            source $BASH_ENV
+
+jobs:
+  fmt_validate_terraform:
+    parameters:
+      git_username:
+        type: string
+
+    executor:
+      name: default
+      git_username: << parameters.git_username >>
+
+    steps:
+      - checkout
+      - assume_role
+      - terraform/init:
+          backend: true
+      - terraform/fmt
+      - terraform/validate
+
+  plan_terraform:
+    parameters:
+      git_username:
+        type: string
+
+    executor:
+      name: default
+      git_username: << parameters.git_username >>
+
+    steps:
+      - checkout
+      - assume_role
+      - terraform/init:
+          backend: true
+      - terraform/plan
+
+  apply_terraform:
+    parameters:
+      git_username:
+        type: string
+
+    executor:
+      name: default
+      git_username: << parameters.git_username >>
+
+    steps:
+      - checkout
+      - assume_role
+      - terraform/init:
+          backend: true
+      - terraform/apply
+
+workflows:
+  terraform:
+    jobs:
+      - fmt_validate_terraform:
+          context: zekia
+          git_username: appsune-miku
+      - plan_terraform:
+          context: zekia
+          git_username: appsune-miku
+          requires:
+            - fmt_validate_terraform
+      - slack/approval-notification:
+          message: "Terraform Apply is pending approval"
+          include_job_number_field: false
+          context: zekia
+          requires:
+            - plan_terraform
+          filters:
+            branches:
+              only:
+                - main
+      - hold_apply_terraform:
+          type: approval
+          requires:
+            - slack/approval-notification
+          filters:
+            branches:
+              only:
+                - main
+      - apply_terraform:
+          context: zekia
+          git_username: appsune-miku
+          requires:
+            - hold_apply_terraform
+          filters:
+            branches:
+              only:
+                - main
