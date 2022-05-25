@@ -1,19 +1,17 @@
-resource "aws_acm_certificate" "main" {
-  domain_name       = var.domain
-  validation_method = "DNS"
+resource "aws_route53domains_registered_domain" "main" {
+  domain_name = var.domain
 
-  lifecycle {
-    create_before_destroy = true
+  dynamic "name_server" {
+    for_each = data.aws_route53_zone.main.name_servers
+    content {
+      name = name_server.value
+    }
   }
 }
 
-resource "aws_acm_certificate_validation" "main" {
-  certificate_arn         = aws_acm_certificate.main.arn
-  validation_record_fqdns = [for record in aws_route53_record.validation : record.fqdn]
-}
-
-resource "aws_route53_zone" "main" {
-  name = var.domain
+data "aws_route53_zone" "main" {
+  name         = var.domain
+  private_zone = false
 }
 
 resource "aws_route53_zone" "api" {
@@ -34,11 +32,11 @@ resource "aws_route53_record" "validation" {
   records         = [each.value.record]
   ttl             = 60
   type            = each.value.type
-  zone_id         = aws_route53_zone.main.zone_id
+  zone_id         = data.aws_route53_zone.main.zone_id
 }
 
 resource "aws_route53_record" "main" {
-  zone_id = aws_route53_zone.main.zone_id
+  zone_id = data.aws_route53_zone.main.zone_id
   name    = var.domain
   type    = "A"
 

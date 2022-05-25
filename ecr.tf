@@ -1,5 +1,5 @@
 resource "aws_ecr_repository" "main" {
-  name                 = "${local.name}-repository-${var.environment}"
+  name                 = "${local.project}-repository-${var.environment}"
   image_tag_mutability = "IMMUTABLE"
 
   image_scanning_configuration {
@@ -8,7 +8,7 @@ resource "aws_ecr_repository" "main" {
 
   encryption_configuration {
     encryption_type = "KMS"
-    kms_key         = module.ecr_kms.key_id
+    kms_key         = "arn:aws:kms:${var.aws_region}:${data.aws_caller_identity.current.account_id}:key/${module.ecr_kms.key_id}"
   }
 }
 
@@ -18,7 +18,7 @@ resource "aws_ecr_lifecycle_policy" "main" {
 }
 
 resource "aws_iam_policy" "ecr_policy" {
-  name   = "${local.name}-ecr-policy"
+  name   = "${local.project}-ecr-policy"
   policy = data.aws_iam_policy_document.ecr.json
 
 }

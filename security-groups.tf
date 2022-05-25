@@ -1,5 +1,5 @@
 resource "aws_security_group" "alb" {
-  name        = "${local.name}-sg-alb-${var.environment}"
+  name        = "${local.project}-sg-alb-${var.environment}"
   vpc_id      = module.vpc.vpc_id
   description = "Inbound access to the ALB."
 
@@ -29,7 +29,7 @@ resource "aws_security_group" "alb" {
 }
 
 resource "aws_security_group" "ecs_tasks" {
-  name        = "${local.name}-sg-task-${var.environment}"
+  name        = "${local.project}-sg-task-${var.environment}"
   vpc_id      = module.vpc.vpc_id
   description = "Security group for ECS task role."
 

@@ -1,5 +1,5 @@
 resource "aws_lb" "main" {
-  name                       = "${local.name}-alb-${var.environment}"
+  name                       = "${local.project}-alb-${var.environment}"
   internal                   = false
   load_balancer_type         = "application"
   security_groups            = [aws_security_group.alb.id]
@@ -8,11 +8,15 @@ resource "aws_lb" "main" {
 }
 
 resource "aws_lb_target_group" "main" {
-  name        = "${local.name}-tg-${var.environment}"
+  name        = "${local.project}-tg-${var.environment}"
   port        = 80
   protocol    = "HTTP"
   target_type = "ip"
   vpc_id      = module.vpc.vpc_id
+
+  depends_on = [
+    aws_lb.main
+  ]
 }
 
 resource "aws_lb_listener" "http" {
@@ -36,7 +40,7 @@ resource "aws_lb_listener" "https" {
   port              = 443
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-TLS-1-2-2017-01"
-  certificate_arn   = aws_acm_certificate_validation.main.certificate_arn
+  certificate_arn   = aws_acm_certificate.lb.arn
 
   default_action {
     type             = "forward"

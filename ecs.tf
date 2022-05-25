@@ -1,5 +1,5 @@
 resource "aws_ecs_cluster" "main" {
-  name = "${local.name}-cluster-${var.environment}"
+  name = "${local.project}-cluster-${var.environment}"
 }
 
 resource "aws_ecs_cluster_capacity_providers" "main" {
@@ -8,7 +8,7 @@ resource "aws_ecs_cluster_capacity_providers" "main" {
 }
 
 resource "aws_ecs_task_definition" "main" {
-  family                   = "${local.name}-task-${var.environment}"
+  family                   = "${local.project}-task-${var.environment}"
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
   cpu                      = var.container_cpu
@@ -34,7 +34,7 @@ resource "aws_ecs_task_definition" "main" {
 }
 
 resource "aws_ecs_service" "main" {
-  name            = "${local.name}-service-${var.environment}"
+  name            = "${local.project}-service-${var.environment}"
   cluster         = aws_ecs_cluster.main.id
   task_definition = aws_ecs_task_definition.main.arn
   desired_count   = var.desired_count
@@ -59,6 +59,8 @@ resource "aws_ecs_service" "main" {
   }
 
   depends_on = [
-    aws_iam_role_policy_attachment.ecs_task_execution_role
+    aws_iam_role_policy_attachment.ecs_task_execution_role,
+    aws_lb_listener.http,
+    aws_lb_listener.https
   ]
 }

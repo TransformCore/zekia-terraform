@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "client" {
-  bucket = "${local.name}-client"
+  bucket = "${local.project}-client-${var.environment}"
 }
 
 resource "aws_s3_bucket_acl" "client" {
@@ -76,11 +76,11 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     }
   }
 
+  comment             = var.domain
   enabled             = true
   is_ipv6_enabled     = true
   default_root_object = "index.html"
   price_class         = "PriceClass_200"
-  aliases             = [var.domain]
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]
@@ -102,8 +102,9 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 
   viewer_certificate {
-    acm_certificate_arn      = aws_acm_certificate.main.arn
+    acm_certificate_arn      = aws_acm_certificate_validation.main.certificate_arn
     minimum_protocol_version = "TLSv1.2_2021"
+    ssl_support_method       = "sni-only"
   }
 
   restrictions {
