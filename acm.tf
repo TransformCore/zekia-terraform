@@ -1,5 +1,5 @@
 resource "aws_acm_certificate" "lb" {
-  domain_name       = var.domain
+  domain_name       = local.domain
   validation_method = "DNS"
 
   lifecycle {
@@ -9,7 +9,7 @@ resource "aws_acm_certificate" "lb" {
 
 resource "aws_acm_certificate" "main" {
   provider          = aws.cloudfront
-  domain_name       = "*.${var.domain}"
+  domain_name       = "*.${local.domain}"
   validation_method = "DNS"
 
   lifecycle {

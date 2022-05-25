@@ -1,5 +1,5 @@
 resource "aws_route53domains_registered_domain" "main" {
-  domain_name = var.domain
+  domain_name = local.domain
 
   dynamic "name_server" {
     for_each = data.aws_route53_zone.main.name_servers
@@ -10,12 +10,12 @@ resource "aws_route53domains_registered_domain" "main" {
 }
 
 data "aws_route53_zone" "main" {
-  name         = var.domain
+  name         = local.domain
   private_zone = false
 }
 
 resource "aws_route53_zone" "api" {
-  name = "api.${var.domain}"
+  name = "api.${local.domain}"
 }
 
 resource "aws_route53_record" "validation" {
@@ -37,7 +37,7 @@ resource "aws_route53_record" "validation" {
 
 resource "aws_route53_record" "main" {
   zone_id = data.aws_route53_zone.main.zone_id
-  name    = var.domain
+  name    = local.domain
   type    = "A"
 
   alias {
@@ -49,7 +49,7 @@ resource "aws_route53_record" "main" {
 
 resource "aws_route53_record" "api" {
   zone_id = aws_route53_zone.api.zone_id
-  name    = "api.${var.domain}"
+  name    = "api.${local.domain}"
   type    = "A"
 
   alias {

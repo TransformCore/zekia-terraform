@@ -100,14 +100,13 @@ The Terraform for the zekia.io infrastructure. This deploys the following to AWS
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | Region of the AWS account. | `string` | `"eu-west-2"` | no |
-| <a name="input_container_cpu"></a> [container\_cpu](#input\_container\_cpu) | Number of CPU units used by the task. | `number` | n/a | yes |
+| <a name="input_container_cpu"></a> [container\_cpu](#input\_container\_cpu) | Number of CPU units used by the task. | `number` | `512` | no |
 | <a name="input_container_envs"></a> [container\_envs](#input\_container\_envs) | Environment variables for the container. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | <a name="input_container_image"></a> [container\_image](#input\_container\_image) | Name of the container image. | `string` | n/a | yes |
-| <a name="input_container_image_tag"></a> [container\_image\_tag](#input\_container\_image\_tag) | Version of the container image to use. | `string` | n/a | yes |
-| <a name="input_container_memory"></a> [container\_memory](#input\_container\_memory) | Amount (MiB) of memory used by the task. | `number` | n/a | yes |
-| <a name="input_container_port"></a> [container\_port](#input\_container\_port) | Port the container should run on. | `number` | n/a | yes |
-| <a name="input_desired_count"></a> [desired\_count](#input\_desired\_count) | Desired number of ECS tasks to run. | `number` | n/a | yes |
-| <a name="input_domain"></a> [domain](#input\_domain) | Domain name of the project. | `string` | n/a | yes |
+| <a name="input_container_image_tag"></a> [container\_image\_tag](#input\_container\_image\_tag) | Version of the container image to use. | `string` | `"latest"` | no |
+| <a name="input_container_memory"></a> [container\_memory](#input\_container\_memory) | Amount (MiB) of memory used by the task. | `number` | `1024` | no |
+| <a name="input_container_port"></a> [container\_port](#input\_container\_port) | Port the container should run on. | `number` | `8080` | no |
+| <a name="input_desired_count"></a> [desired\_count](#input\_desired\_count) | Desired number of ECS tasks to run. | `number` | `1` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | Project environment (dev, stage, prod). | `string` | `"dev"` | no |
 
 ## Outputs
