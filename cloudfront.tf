@@ -54,14 +54,6 @@ data "aws_iam_policy_document" "client" {
   }
 }
 
-resource "aws_s3_bucket_public_access_block" "client" {
-  bucket                  = aws_s3_bucket.client.id
-  block_public_acls       = true
-  block_public_policy     = true
-  restrict_public_buckets = true
-  ignore_public_acls      = true
-}
-
 resource "aws_cloudfront_origin_access_identity" "main" {
   comment = "${local.project} S3 Origin"
 }
@@ -76,6 +68,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     }
   }
 
+  aliases             = [local.domain]
   comment             = local.domain
   enabled             = true
   is_ipv6_enabled     = true
@@ -102,7 +95,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 
   viewer_certificate {
-    acm_certificate_arn      = aws_acm_certificate_validation.main.certificate_arn
+    acm_certificate_arn      = aws_acm_certificate_validation.root.certificate_arn
     minimum_protocol_version = "TLSv1.2_2021"
     ssl_support_method       = "sni-only"
   }

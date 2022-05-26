@@ -18,9 +18,43 @@ resource "aws_route53_zone" "api" {
   name = "api.${local.domain}"
 }
 
-resource "aws_route53_record" "validation" {
+resource "aws_route53_record" "wildcard_validation" {
   for_each = {
-    for dvo in aws_acm_certificate.main.domain_validation_options : dvo.domain_name => {
+    for dvo in aws_acm_certificate.wildcard.domain_validation_options : dvo.domain_name => {
+      name   = dvo.resource_record_name
+      record = dvo.resource_record_value
+      type   = dvo.resource_record_type
+    }
+  }
+
+  allow_overwrite = true
+  name            = each.value.name
+  records         = [each.value.record]
+  ttl             = 60
+  type            = each.value.type
+  zone_id         = data.aws_route53_zone.main.zone_id
+}
+
+resource "aws_route53_record" "root_validation" {
+  for_each = {
+    for dvo in aws_acm_certificate.root.domain_validation_options : dvo.domain_name => {
+      name   = dvo.resource_record_name
+      record = dvo.resource_record_value
+      type   = dvo.resource_record_type
+    }
+  }
+
+  allow_overwrite = true
+  name            = each.value.name
+  records         = [each.value.record]
+  ttl             = 60
+  type            = each.value.type
+  zone_id         = data.aws_route53_zone.main.zone_id
+}
+
+resource "aws_route53_record" "lb_validation" {
+  for_each = {
+    for dvo in aws_acm_certificate.lb.domain_validation_options : dvo.domain_name => {
       name   = dvo.resource_record_name
       record = dvo.resource_record_value
       type   = dvo.resource_record_type

@@ -38,9 +38,11 @@ The Terraform for the zekia.io infrastructure. This deploys the following to AWS
 | Name | Type |
 |------|------|
 | [aws_acm_certificate.lb](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/acm_certificate) | resource |
-| [aws_acm_certificate.main](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/acm_certificate) | resource |
+| [aws_acm_certificate.root](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/acm_certificate) | resource |
+| [aws_acm_certificate.wildcard](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/acm_certificate) | resource |
 | [aws_acm_certificate_validation.lb](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/acm_certificate_validation) | resource |
-| [aws_acm_certificate_validation.main](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/acm_certificate_validation) | resource |
+| [aws_acm_certificate_validation.root](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/acm_certificate_validation) | resource |
+| [aws_acm_certificate_validation.wildcard](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/acm_certificate_validation) | resource |
 | [aws_athena_database.main](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/athena_database) | resource |
 | [aws_cloudfront_distribution.s3_distribution](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/cloudfront_distribution) | resource |
 | [aws_cloudfront_origin_access_identity.main](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/cloudfront_origin_access_identity) | resource |
@@ -51,22 +53,22 @@ The Terraform for the zekia.io infrastructure. This deploys the following to AWS
 | [aws_ecs_service.main](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/ecs_service) | resource |
 | [aws_ecs_task_definition.main](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/ecs_task_definition) | resource |
 | [aws_iam_policy.ecr_policy](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/iam_policy) | resource |
-| [aws_iam_policy.machine_user_policy](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.s3_policy](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/iam_policy) | resource |
 | [aws_iam_role.assume_role](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/iam_role) | resource |
 | [aws_iam_role.ecs_task_execution_role](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/iam_role) | resource |
 | [aws_iam_role_policy_attachment.assume_role_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.ecs_task_execution_role](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_user.main](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/iam_user) | resource |
-| [aws_iam_user_policy_attachment.main](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/iam_user_policy_attachment) | resource |
 | [aws_lb.main](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/lb) | resource |
 | [aws_lb_listener.http](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/lb_listener) | resource |
 | [aws_lb_listener.https](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/lb_listener) | resource |
 | [aws_lb_target_group.main](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/lb_target_group) | resource |
 | [aws_route.internet_access](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/route) | resource |
 | [aws_route53_record.api](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/route53_record) | resource |
+| [aws_route53_record.lb_validation](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/route53_record) | resource |
 | [aws_route53_record.main](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/route53_record) | resource |
-| [aws_route53_record.validation](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/route53_record) | resource |
+| [aws_route53_record.root_validation](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/route53_record) | resource |
+| [aws_route53_record.wildcard_validation](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/route53_record) | resource |
 | [aws_route53_zone.api](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/route53_zone) | resource |
 | [aws_route53domains_registered_domain.main](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/route53domains_registered_domain) | resource |
 | [aws_route_table.private](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/route_table) | resource |
@@ -76,7 +78,6 @@ The Terraform for the zekia.io infrastructure. This deploys the following to AWS
 | [aws_s3_bucket_acl.client](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/s3_bucket_acl) | resource |
 | [aws_s3_bucket_policy.client](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/s3_bucket_policy) | resource |
 | [aws_s3_bucket_public_access_block.athena](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/s3_bucket_public_access_block) | resource |
-| [aws_s3_bucket_public_access_block.client](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/s3_bucket_public_access_block) | resource |
 | [aws_s3_bucket_server_side_encryption_configuration.athena](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/s3_bucket_server_side_encryption_configuration) | resource |
 | [aws_s3_bucket_server_side_encryption_configuration.client](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/s3_bucket_server_side_encryption_configuration) | resource |
 | [aws_s3_bucket_versioning.athena](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/s3_bucket_versioning) | resource |
@@ -90,7 +91,6 @@ The Terraform for the zekia.io infrastructure. This deploys the following to AWS
 | [aws_iam_policy_document.client](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.ecr](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.ecs_task_execution_role](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/iam_policy_document) | data source |
-| [aws_iam_policy_document.machine_user](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.s3](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/iam_policy_document) | data source |
 | [aws_route53_zone.main](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/route53_zone) | data source |
 | [aws_s3_bucket.state](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/s3_bucket) | data source |

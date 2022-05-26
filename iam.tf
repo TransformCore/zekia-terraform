@@ -87,21 +87,3 @@ resource "aws_iam_user" "main" {
   name = "${local.project}-machine-user"
   path = "/system/"
 }
-
-resource "aws_iam_user_policy_attachment" "main" {
-  user       = aws_iam_user.main.name
-  policy_arn = aws_iam_policy.machine_user_policy.arn
-}
-
-resource "aws_iam_policy" "machine_user_policy" {
-  name   = "${local.project}-machine-user-policy"
-  policy = data.aws_iam_policy_document.machine_user.json
-}
-
-data "aws_iam_policy_document" "machine_user" {
-  statement {
-    effect    = "Allow"
-    actions   = ["sts:AssumeRole"]
-    resources = ["arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/*"]
-  }
-}
