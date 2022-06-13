@@ -1,4 +1,4 @@
-# internal-cloud-carbon-footprint-terraform
+# zekia-terraform
 
 The Terraform for the zekia.io infrastructure. This deploys the following to AWS:
 
