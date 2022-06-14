@@ -31,6 +31,7 @@ The Terraform for the zekia.io infrastructure. This deploys the following to AWS
 |------|--------|---------|
 | <a name="module_athena_kms"></a> [athena\_kms](#module\_athena\_kms) | git@github.com:TransformCore/internal-terraform-aws-kms.git | v0.0.1 |
 | <a name="module_ecr_kms"></a> [ecr\_kms](#module\_ecr\_kms) | git@github.com:TransformCore/internal-terraform-aws-kms.git | v0.0.1 |
+| <a name="module_paramstore_kms"></a> [paramstore\_kms](#module\_paramstore\_kms) | git@github.com:TransformCore/internal-terraform-aws-kms.git | v0.0.1 |
 | <a name="module_vpc"></a> [vpc](#module\_vpc) | terraform-aws-modules/vpc/aws | 3.14.0 |
 
 ## Resources
@@ -85,8 +86,10 @@ The Terraform for the zekia.io infrastructure. This deploys the following to AWS
 | [aws_s3_bucket_website_configuration.client](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/s3_bucket_website_configuration) | resource |
 | [aws_security_group.alb](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/security_group) | resource |
 | [aws_security_group.ecs_tasks](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/security_group) | resource |
+| [aws_ssm_parameter.params](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/ssm_parameter) | resource |
 | [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/availability_zones) | data source |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/caller_identity) | data source |
+| [aws_iam_account_alias.current](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/iam_account_alias) | data source |
 | [aws_iam_policy_document.assume_role_policy](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.client](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.ecr](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/iam_policy_document) | data source |
