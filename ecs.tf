@@ -23,7 +23,7 @@ resource "aws_ecs_task_definition" "main" {
       cpu         = var.container_cpu
       memory      = var.container_memory
       essential   = true
-      environment = [var.container_envs]
+      environment = split(",", data.aws_ssm_parameter.fetched_params.value)
       portMappings = [{
         protocol      = "tcp"
         containerPort = var.container_port

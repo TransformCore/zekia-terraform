@@ -16,3 +16,5 @@ locals {
     "AWS_AUTH_MODE"                    = "AWS"
   }
 }
+
+data "aws_iam_account_alias" "current" {}
