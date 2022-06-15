@@ -23,12 +23,21 @@ resource "aws_ecs_task_definition" "main" {
       cpu         = var.container_cpu
       memory      = var.container_memory
       essential   = true
-      environment = split(",", data.aws_ssm_parameter.fetched_params.value)
+      environment = local.parameters
       portMappings = [{
         protocol      = "tcp"
         containerPort = var.container_port
         hostPort      = var.container_port
       }]
+      logConfiguration = {
+        logDriver = "awslogs"
+        options = {
+          awslogs-create-group  = "true"
+          awslogs-group         = "zekia-logs"
+          awslogs-region        = var.aws_region
+          awslogs-stream-prefix = "zekia"
+        }
+      }
     }
   ])
 }
@@ -52,10 +61,11 @@ resource "aws_ecs_service" "main" {
     container_port   = var.container_port
   }
 
-  # We can ignore task definition as revision changes happen on deploy
-  # and desired count will change based on the autoscaling policy
+  # desired count will change based on the autoscaling policy
   lifecycle {
-    ignore_changes = [task_definition, desired_count]
+    ignore_changes = [
+      desired_count
+    ]
   }
 
   depends_on = [

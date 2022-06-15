@@ -4,17 +4,44 @@ locals {
   s3_origin_id   = "s3OriginId"
   domain         = "zekia.io"
 
-  parameters = {
-    "AWS_TARGET_ACCOUNT_ROLE_NAME"     = aws_iam_role.assume_role.name
-    "AWS_USE_BILLING_DATA"             = true
-    "AWS_ATHENA_DB_NAME"               = aws_athena_database.main.name
-    "AWS_ATHENA_DB_TABLE"              = "billing_data"
-    "AWS_ATHENA_REGION"                = var.aws_region
-    "AWS_ATHENA_QUERY_RESULT_LOCATION" = "s3://${aws_s3_bucket.athena.bucket}"
-    "AWS_BILLING_ACCOUNT_ID"           = data.aws_caller_identity.current.account_id
-    "AWS_BILLING_ACCOUNT_NAME"         = data.aws_iam_account_alias.current.account_alias
-    "AWS_AUTH_MODE"                    = "AWS"
-  }
+  parameters = [
+    {
+      name  = "AWS_TARGET_ACCOUNT_ROLE_NAME",
+      value = aws_iam_role.assume_role.name
+    },
+    {
+      name  = "AWS_USE_BILLING_DATA",
+      value = "true"
+    },
+    {
+      name  = "AWS_ATHENA_DB_NAME",
+      value = aws_athena_database.main.name,
+    },
+    {
+      name  = "AWS_ATHENA_DB_TABLE",
+      value = "billing_data"
+    },
+    {
+      name  = "AWS_ATHENA_REGION",
+      value = var.aws_region
+    },
+    {
+      name  = "AWS_ATHENA_QUERY_RESULT_LOCATION",
+      value = "s3://${aws_s3_bucket.athena.bucket}"
+    },
+    {
+      name  = "AWS_BILLING_ACCOUNT_ID",
+      value = data.aws_caller_identity.current.account_id
+    },
+    {
+      name  = "AWS_BILLING_ACCOUNT_NAME",
+      value = data.aws_iam_account_alias.current.account_alias
+    },
+    {
+      name  = "AWS_AUTH_MODE",
+      value = "EC2-METADATA"
+    }
+  ]
 }
 
 data "aws_iam_account_alias" "current" {}

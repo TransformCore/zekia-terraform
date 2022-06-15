@@ -86,7 +86,6 @@ The Terraform for the zekia.io infrastructure. This deploys the following to AWS
 | [aws_s3_bucket_website_configuration.client](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/s3_bucket_website_configuration) | resource |
 | [aws_security_group.alb](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/security_group) | resource |
 | [aws_security_group.ecs_tasks](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/security_group) | resource |
-| [aws_ssm_parameter.params](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/ssm_parameter) | resource |
 | [aws_availability_zones.available](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/availability_zones) | data source |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/caller_identity) | data source |
 | [aws_iam_account_alias.current](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/iam_account_alias) | data source |
@@ -97,18 +96,17 @@ The Terraform for the zekia.io infrastructure. This deploys the following to AWS
 | [aws_iam_policy_document.s3](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/iam_policy_document) | data source |
 | [aws_route53_zone.main](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/route53_zone) | data source |
 | [aws_s3_bucket.state](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/s3_bucket) | data source |
-| [aws_ssm_parameter.fetched_params](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/ssm_parameter) | data source |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | Region of the AWS account. | `string` | `"eu-west-2"` | no |
-| <a name="input_container_cpu"></a> [container\_cpu](#input\_container\_cpu) | Number of CPU units used by the task. | `number` | `512` | no |
+| <a name="input_container_cpu"></a> [container\_cpu](#input\_container\_cpu) | Number of CPU units used by the task. | `number` | `1024` | no |
 | <a name="input_container_envs"></a> [container\_envs](#input\_container\_envs) | Environment variables for the container. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | <a name="input_container_image"></a> [container\_image](#input\_container\_image) | Name of the container image. | `string` | n/a | yes |
 | <a name="input_container_image_tag"></a> [container\_image\_tag](#input\_container\_image\_tag) | Version of the container image to use. | `string` | `"latest"` | no |
-| <a name="input_container_memory"></a> [container\_memory](#input\_container\_memory) | Amount (MiB) of memory used by the task. | `number` | `1024` | no |
+| <a name="input_container_memory"></a> [container\_memory](#input\_container\_memory) | Amount (MiB) of memory used by the task. | `number` | `2048` | no |
 | <a name="input_container_port"></a> [container\_port](#input\_container\_port) | Port the container should run on. | `number` | `8080` | no |
 | <a name="input_desired_count"></a> [desired\_count](#input\_desired\_count) | Desired number of ECS tasks to run. | `number` | `1` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | Project environment (dev, stage, prod). | `string` | `"dev"` | no |

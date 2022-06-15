@@ -19,13 +19,13 @@ variable "desired_count" {
 variable "container_cpu" {
   type        = number
   description = "Number of CPU units used by the task."
-  default     = 512
+  default     = 1024
 }
 
 variable "container_memory" {
   type        = number
   description = "Amount (MiB) of memory used by the task."
-  default     = 1024
+  default     = 2048
 }
 
 variable "container_port" {

@@ -21,6 +21,7 @@ provider "aws" {
     tags = {
       Environment = var.environment
       Project     = local.project
+      ProjectCode = "TRN.TRN16410"
     }
   }
 }
@@ -33,6 +34,7 @@ provider "aws" {
     tags = {
       Environment = var.environment
       Project     = local.project
+      ProjectCode = "TRN.TRN16410"
     }
   }
 }
