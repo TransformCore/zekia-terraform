@@ -34,17 +34,6 @@ variable "container_port" {
   default     = 8080
 }
 
-variable "container_image" {
-  type        = string
-  description = "Name of the container image."
-}
-
-variable "container_image_tag" {
-  type        = string
-  description = "Version of the container image to use."
-  default     = "latest"
-}
-
 variable "container_envs" {
   type        = list(string)
   description = "Environment variables for the container."

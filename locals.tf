@@ -1,8 +1,10 @@
 locals {
-  project        = "zekia"
-  container_name = "${local.project}-api-${var.environment}"
-  s3_origin_id   = "s3OriginId"
-  domain         = "zekia.io"
+  project             = "zekia"
+  container_name      = "${local.project}-api-${var.environment}"
+  s3_origin_id        = "s3OriginId"
+  domain              = "zekia.io"
+  container_image     = "${data.aws_caller_identity.current.account_id}.dkr.ecr.${var.aws_region}.amazonaws.com/${aws_ecr_repository.main.name}"
+  container_image_tag = "latest"
 
   parameters = [
     {
