@@ -105,4 +105,8 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
       restriction_type = "none"
     }
   }
+
+  lifecycle {
+    ignore_changes = [origin]
+  }
 }

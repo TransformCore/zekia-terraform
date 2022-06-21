@@ -31,7 +31,7 @@ variable "container_memory" {
 variable "container_port" {
   type        = number
   description = "Port the container should run on."
-  default     = 8080
+  default     = 80
 }
 
 variable "container_envs" {
