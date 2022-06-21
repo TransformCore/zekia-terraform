@@ -14,6 +14,14 @@ resource "aws_lb_target_group" "main" {
   target_type = "ip"
   vpc_id      = module.vpc.vpc_id
 
+  health_check {
+    enabled  = true
+    interval = 60
+    matcher  = "200"
+    path     = "/healthz"
+    timeout  = 5
+  }
+
   depends_on = [
     aws_lb.main
   ]
