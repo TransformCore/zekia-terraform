@@ -41,7 +41,7 @@ locals {
     },
     {
       name  = "AWS_AUTH_MODE",
-      value = "EC2-METADATA"
+      value = "AWS"
     }
   ]
 }
