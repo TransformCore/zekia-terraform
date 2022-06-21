@@ -12,6 +12,16 @@ data "aws_iam_policy_document" "ecs_task_execution_role" {
       identifiers = ["ecs-tasks.amazonaws.com"]
     }
   }
+
+  statement {
+    effect = "Allow"
+    actions = [
+      "athena:*",
+      "ce:GetRightsizingRecommendation",
+      "glue:*"
+    ]
+    resources = ["*"]
+  }
 }
 
 resource "aws_iam_role" "ecs_task_execution_role" {
