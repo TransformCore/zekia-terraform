@@ -18,7 +18,7 @@ resource "aws_lb_target_group" "main" {
     enabled  = true
     interval = 60
     matcher  = "200"
-    path     = "/healthz"
+    path     = "/api/healthz"
     timeout  = 5
   }
 
