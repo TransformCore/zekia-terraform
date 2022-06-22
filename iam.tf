@@ -114,17 +114,17 @@ data "aws_iam_policy_document" "glue" {
 }
 
 resource "aws_iam_policy" "athena" {
-  name   = "ccf-api-athena-policy"
+  name   = "${local.project}-api-athena-policy"
   policy = data.aws_iam_policy_document.athena.json
 }
 
 resource "aws_iam_policy" "ce" {
-  name   = "ccf-api-ce-policy"
+  name   = "${local.project}-api-ce-policy"
   policy = data.aws_iam_policy_document.ce.json
 }
 
 resource "aws_iam_policy" "glue" {
-  name   = "ccf-api-glue-policy"
+  name   = "${local.project}-api-glue-policy"
   policy = data.aws_iam_policy_document.glue.json
 }
 
