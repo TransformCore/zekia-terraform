@@ -9,7 +9,7 @@ locals {
   parameters = [
     {
       name  = "AWS_TARGET_ACCOUNT_ROLE_NAME",
-      value = aws_iam_role.assume_role.name
+      value = aws_iam_role.ecs_task_execution_role.name
     },
     {
       name  = "AWS_USE_BILLING_DATA",
