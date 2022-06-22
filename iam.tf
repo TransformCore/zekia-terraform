@@ -113,6 +113,19 @@ data "aws_iam_policy_document" "glue" {
   }
 }
 
+data "aws_iam_policy_document" "ssm" {
+  statement {
+    actions = [
+      "ssmmessages:CreateControlChannel",
+      "ssmmessages:CreateDataChannel",
+      "ssmmessages:OpenControlChannel",
+      "ssmmessages:OpenDataChannel"
+    ]
+    effect    = "Allow"
+    resources = ["*"]
+  }
+}
+
 resource "aws_iam_policy" "athena" {
   name   = "${local.project}-api-athena-policy"
   policy = data.aws_iam_policy_document.athena.json
@@ -128,6 +141,11 @@ resource "aws_iam_policy" "glue" {
   policy = data.aws_iam_policy_document.glue.json
 }
 
+resource "aws_iam_policy" "ssm" {
+  name   = "${local.project}-api-ssm-policy"
+  policy = data.aws_iam_policy_document.ssm.json
+}
+
 resource "aws_iam_role_policy_attachment" "athena" {
   policy_arn = aws_iam_policy.athena.arn
   role       = aws_iam_role.ecs_task_execution_role.name
@@ -140,5 +158,10 @@ resource "aws_iam_role_policy_attachment" "ce" {
 
 resource "aws_iam_role_policy_attachment" "glue" {
   policy_arn = aws_iam_policy.glue.arn
+  role       = aws_iam_role.ecs_task_execution_role.name
+}
+
+resource "aws_iam_role_policy_attachment" "ssm" {
+  policy_arn = aws_iam_policy.ssm.arn
   role       = aws_iam_role.ecs_task_execution_role.name
 }
