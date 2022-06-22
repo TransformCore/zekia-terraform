@@ -43,11 +43,12 @@ resource "aws_ecs_task_definition" "main" {
 }
 
 resource "aws_ecs_service" "main" {
-  name            = "${local.project}-service-${var.environment}"
-  cluster         = aws_ecs_cluster.main.id
-  task_definition = aws_ecs_task_definition.main.arn
-  desired_count   = var.desired_count
-  launch_type     = "FARGATE" # therefore scheduling_strategy is REPLICA by default
+  name                   = "${local.project}-service-${var.environment}"
+  cluster                = aws_ecs_cluster.main.id
+  task_definition        = aws_ecs_task_definition.main.arn
+  desired_count          = var.desired_count
+  enable_execute_command = var.environment == "dev" ? true : false # enable ECS Exec on development containers
+  launch_type            = "FARGATE"                               # therefore scheduling_strategy is REPLICA by default
 
   network_configuration {
     security_groups  = [aws_security_group.ecs_tasks.id]
