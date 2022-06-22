@@ -3,14 +3,9 @@ data "aws_caller_identity" "current" {}
 data "aws_iam_policy_document" "ecs_task_execution_role" {
   version = "2012-10-17"
   statement {
-    sid    = ""
-    effect = "Allow"
-    actions = [
-      "sts:AssumeRole",
-      "athena:*",
-      "ce:GetRightsizingRecommendation",
-      "glue:*"
-    ]
+    sid     = ""
+    effect  = "Allow"
+    actions = ["sts:AssumeRole"]
 
     principals {
       type        = "Service"
@@ -91,4 +86,59 @@ data "aws_iam_policy_document" "s3" {
 resource "aws_iam_user" "main" {
   name = "${local.project}-machine-user"
   path = "/system/"
+}
+
+
+data "aws_iam_policy_document" "athena" {
+  statement {
+    actions   = ["athena:*"]
+    effect    = "Allow"
+    resources = ["*"]
+  }
+}
+
+data "aws_iam_policy_document" "ce" {
+  statement {
+    actions   = ["ce:GetRightsizingRecommendation"]
+    effect    = "Allow"
+    resources = ["*"]
+  }
+}
+
+data "aws_iam_policy_document" "glue" {
+  statement {
+    actions   = ["glue:*"]
+    effect    = "Allow"
+    resources = ["*"]
+  }
+}
+
+resource "aws_iam_policy" "athena" {
+  name   = "ccf-api-athena-policy"
+  policy = data.aws_iam_policy_document.athena.json
+}
+
+resource "aws_iam_policy" "ce" {
+  name   = "ccf-api-ce-policy"
+  policy = data.aws_iam_policy_document.ce.json
+}
+
+resource "aws_iam_policy" "glue" {
+  name   = "ccf-api-glue-policy"
+  policy = data.aws_iam_policy_document.glue.json
+}
+
+resource "aws_iam_role_policy_attachment" "athena" {
+  policy_arn = aws_iam_policy.athena.arn
+  role       = aws_iam_role.ecs_task_execution_role.name
+}
+
+resource "aws_iam_role_policy_attachment" "ce" {
+  policy_arn = aws_iam_policy.ce.arn
+  role       = aws_iam_role.ecs_task_execution_role.name
+}
+
+resource "aws_iam_role_policy_attachment" "glue" {
+  policy_arn = aws_iam_policy.glue.arn
+  role       = aws_iam_role.ecs_task_execution_role.name
 }
