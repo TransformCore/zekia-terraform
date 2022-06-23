@@ -78,7 +78,7 @@ resource "aws_route53_record" "main" {
 }
 
 resource "aws_route53_record" "api" {
-  zone_id = aws_route53_zone.main.zone_id
+  zone_id = data.aws_route53_zone.main.zone_id
   name    = "api.${local.domain}"
   type    = "A"
 
