@@ -14,10 +14,6 @@ data "aws_route53_zone" "main" {
   private_zone = false
 }
 
-resource "aws_route53_zone" "api" {
-  name = "api.${local.domain}"
-}
-
 resource "aws_route53_record" "wildcard_validation" {
   for_each = {
     for dvo in aws_acm_certificate.wildcard.domain_validation_options : dvo.domain_name => {
@@ -82,7 +78,7 @@ resource "aws_route53_record" "main" {
 }
 
 resource "aws_route53_record" "api" {
-  zone_id = aws_route53_zone.api.zone_id
+  zone_id = data.aws_route53_zone.main.zone_id
   name    = "api.${local.domain}"
   type    = "A"
 
