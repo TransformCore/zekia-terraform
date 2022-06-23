@@ -38,10 +38,8 @@ The Terraform for the zekia.io infrastructure. This deploys the following to AWS
 
 | Name | Type |
 |------|------|
-| [aws_acm_certificate.lb](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/acm_certificate) | resource |
 | [aws_acm_certificate.root](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/acm_certificate) | resource |
 | [aws_acm_certificate.wildcard](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/acm_certificate) | resource |
-| [aws_acm_certificate_validation.lb](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/acm_certificate_validation) | resource |
 | [aws_acm_certificate_validation.root](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/acm_certificate_validation) | resource |
 | [aws_acm_certificate_validation.wildcard](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/acm_certificate_validation) | resource |
 | [aws_athena_database.main](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/athena_database) | resource |
@@ -77,11 +75,9 @@ The Terraform for the zekia.io infrastructure. This deploys the following to AWS
 | [aws_lb_target_group.main](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/lb_target_group) | resource |
 | [aws_route.internet_access](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/route) | resource |
 | [aws_route53_record.api](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/route53_record) | resource |
-| [aws_route53_record.lb_validation](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/route53_record) | resource |
 | [aws_route53_record.main](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/route53_record) | resource |
 | [aws_route53_record.root_validation](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/route53_record) | resource |
 | [aws_route53_record.wildcard_validation](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/route53_record) | resource |
-| [aws_route53_zone.api](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/route53_zone) | resource |
 | [aws_route53domains_registered_domain.main](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/route53domains_registered_domain) | resource |
 | [aws_route_table.private](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/route_table) | resource |
 | [aws_s3_bucket.athena](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/s3_bucket) | resource |

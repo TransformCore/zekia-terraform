@@ -30,3 +30,7 @@ terraform.rc
 
 # tfsec cache
 **/.tfsec/*
+
+# nixos
+.direnv
+.envrc
