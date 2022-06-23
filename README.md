@@ -57,6 +57,7 @@ The Terraform for the zekia.io infrastructure. This deploys the following to AWS
 | [aws_iam_policy.ce](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.ecr_policy](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.glue](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/iam_policy) | resource |
+| [aws_iam_policy.kms](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.s3_policy](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.ssm](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/iam_policy) | resource |
 | [aws_iam_role.assume_role](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/iam_role) | resource |
@@ -66,6 +67,7 @@ The Terraform for the zekia.io infrastructure. This deploys the following to AWS
 | [aws_iam_role_policy_attachment.ce](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.ecs_task_execution_role](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.glue](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.kms](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.ssm](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_user.main](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/iam_user) | resource |
 | [aws_lb.main](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/resources/lb) | resource |
@@ -104,6 +106,7 @@ The Terraform for the zekia.io infrastructure. This deploys the following to AWS
 | [aws_iam_policy_document.ecr](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.ecs_task_execution_role](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.glue](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.kms](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.s3](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.ssm](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/iam_policy_document) | data source |
 | [aws_route53_zone.main](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/route53_zone) | data source |

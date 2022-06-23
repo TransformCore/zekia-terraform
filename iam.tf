@@ -126,6 +126,20 @@ data "aws_iam_policy_document" "ssm" {
   }
 }
 
+data "aws_iam_policy_document" "kms" {
+  statement {
+    actions = [
+      "kms:ListAliases",
+      "kms:ListKeys",
+      "kms:Decrypt"
+    ]
+    effect = "Allow"
+    resources = [
+      "arn:aws:kms:${var.aws_region}:${data.aws_caller_identity.current.account_id}:key/*"
+    ]
+  }
+}
+
 resource "aws_iam_policy" "athena" {
   name   = "${local.project}-api-athena-policy"
   policy = data.aws_iam_policy_document.athena.json
@@ -146,6 +160,11 @@ resource "aws_iam_policy" "ssm" {
   policy = data.aws_iam_policy_document.ssm.json
 }
 
+resource "aws_iam_policy" "kms" {
+  name   = "${local.project}-api-kms-policy"
+  policy = data.aws_iam_policy_document.kms.json
+}
+
 resource "aws_iam_role_policy_attachment" "athena" {
   policy_arn = aws_iam_policy.athena.arn
   role       = aws_iam_role.ecs_task_execution_role.name
@@ -163,5 +182,10 @@ resource "aws_iam_role_policy_attachment" "glue" {
 
 resource "aws_iam_role_policy_attachment" "ssm" {
   policy_arn = aws_iam_policy.ssm.arn
+  role       = aws_iam_role.ecs_task_execution_role.name
+}
+
+resource "aws_iam_role_policy_attachment" "kms" {
+  policy_arn = aws_iam_policy.kms.arn
   role       = aws_iam_role.ecs_task_execution_role.name
 }
