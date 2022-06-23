@@ -9,7 +9,6 @@ resource "aws_acm_certificate" "root" {
 }
 
 resource "aws_acm_certificate" "wildcard" {
-  provider          = aws.cloudfront
   domain_name       = "*.${local.domain}"
   validation_method = "DNS"
 
