@@ -18,7 +18,7 @@ resource "aws_lb_target_group" "main" {
     enabled  = true
     interval = 60
     matcher  = "200"
-    path     = "/api/healthz"
+    path     = "/healthz"
     timeout  = 5
   }
 
@@ -48,7 +48,7 @@ resource "aws_lb_listener" "https" {
   port              = 443
   protocol          = "HTTPS"
   ssl_policy        = "ELBSecurityPolicy-TLS-1-2-2017-01"
-  certificate_arn   = aws_acm_certificate_validation.lb.certificate_arn
+  certificate_arn   = aws_acm_certificate_validation.wildcard.certificate_arn
 
   default_action {
     type             = "forward"
