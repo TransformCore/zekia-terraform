@@ -69,7 +69,8 @@ data "aws_iam_policy_document" "s3" {
       "s3:PutObject"
     ]
     resources = [
-      "${data.aws_s3_bucket.state.arn}/*"
+      "${data.aws_s3_bucket.state.arn}/*",
+      "${aws_s3_bucket.athena.arn}/*"
     ]
   }
   statement {
