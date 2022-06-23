@@ -191,3 +191,8 @@ resource "aws_iam_role_policy_attachment" "kms" {
   policy_arn = aws_iam_policy.kms.arn
   role       = aws_iam_role.ecs_task_execution_role.name
 }
+
+resource "aws_iam_role_policy_attachment" "s3" {
+  policy_arn = aws_iam_policy.s3_policy.arn
+  role       = aws_iam_role.ecs_task_execution_role.name
+}
