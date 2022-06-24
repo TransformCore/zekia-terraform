@@ -107,6 +107,7 @@ The Terraform for the zekia.io infrastructure. This deploys the following to AWS
 | [aws_iam_policy_document.s3](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.ssm](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/iam_policy_document) | data source |
 | [aws_route53_zone.main](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/route53_zone) | data source |
+| [aws_s3_bucket.billing_data](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/s3_bucket) | data source |
 | [aws_s3_bucket.state](https://registry.terraform.io/providers/hashicorp/aws/4.15.1/docs/data-sources/s3_bucket) | data source |
 
 ## Inputs

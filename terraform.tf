@@ -42,3 +42,7 @@ provider "aws" {
 data "aws_s3_bucket" "state" {
   bucket = "zekia-terraform-state"
 }
+
+data "aws_s3_bucket" "billing_data" {
+  bucket = "zekia-billingdatacapture"
+}

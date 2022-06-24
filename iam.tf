@@ -59,7 +59,8 @@ data "aws_iam_policy_document" "s3" {
     ]
     resources = [
       data.aws_s3_bucket.state.arn,
-      aws_s3_bucket.athena.arn
+      aws_s3_bucket.athena.arn,
+      data.aws_s3_bucket.billing_data.arn
     ]
   }
   statement {
@@ -70,7 +71,8 @@ data "aws_iam_policy_document" "s3" {
     ]
     resources = [
       "${data.aws_s3_bucket.state.arn}/*",
-      "${aws_s3_bucket.athena.arn}/*"
+      "${aws_s3_bucket.athena.arn}/*",
+      "${data.aws_s3_bucket.billing_data.arn}/*"
     ]
   }
   statement {
