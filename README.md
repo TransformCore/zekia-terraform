@@ -116,7 +116,6 @@ The Terraform for the zekia.io infrastructure. This deploys the following to AWS
 |------|-------------|------|---------|:--------:|
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | Region of the AWS account. | `string` | `"eu-west-2"` | no |
 | <a name="input_container_cpu"></a> [container\_cpu](#input\_container\_cpu) | Number of CPU units used by the task. | `number` | `1024` | no |
-| <a name="input_container_envs"></a> [container\_envs](#input\_container\_envs) | Environment variables for the container. | `list(string)` | <pre>[<br>  ""<br>]</pre> | no |
 | <a name="input_container_memory"></a> [container\_memory](#input\_container\_memory) | Amount (MiB) of memory used by the task. | `number` | `2048` | no |
 | <a name="input_container_port"></a> [container\_port](#input\_container\_port) | Port the container should run on. | `number` | `80` | no |
 | <a name="input_desired_count"></a> [desired\_count](#input\_desired\_count) | Desired number of ECS tasks to run. | `number` | `1` | no |

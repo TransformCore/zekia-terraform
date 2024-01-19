@@ -33,9 +33,3 @@ variable "container_port" {
   description = "Port the container should run on."
   default     = 80
 }
-
-variable "container_envs" {
-  type        = list(string)
-  description = "Environment variables for the container."
-  default     = [""]
-}
